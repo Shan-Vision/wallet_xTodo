@@ -7,13 +7,13 @@ import { breakpoints } from 'styleConfig/breakpoints';
 
 export const NavList = styled.ul`
   display: flex;
-  margin-bottom: 12px;
+  padding: 12px 62px;
 
   @media screen and (${breakpoints.tablet}) {
-    margin-bottom: 28px;
+  padding: 40px 0 28px 0;
   }
   @media screen and (${breakpoints.laptop}) {
-    margin-bottom: 28px;
+    padding: 40px 0 28px 0;
   }
 `;
 

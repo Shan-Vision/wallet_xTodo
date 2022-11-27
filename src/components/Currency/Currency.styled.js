@@ -11,12 +11,12 @@ export const CurrencyBox = styled.div`
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
     min-height: 182px;
-    margin:0;
+    margin: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
     min-height: 347px;
-    margin:0;
+    margin: 0;
   }
 `;
 export const CurrencyTitle = styled.ul`
@@ -174,3 +174,13 @@ export const ButtonCurrency = styled.button`
     /* border: ${p => p.theme.borders.normal} ${p => p.theme.colors.border}; */
   }
 `;
+
+export const CurrencyWrapper = styled.div`
+@media screen and (${breakpoints.tablet}) {
+  padding: 40px 0px 0px 0px; 
+width: 100%;
+}
+@media screen and (${breakpoints.laptop}) {
+  padding: 0;
+}
+`

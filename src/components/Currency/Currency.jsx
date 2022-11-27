@@ -9,6 +9,7 @@ import {
   CurrencyDataItemText,
   ButtonBox,
   ButtonCurrency,
+  CurrencyWrapper
 } from './Currency.styled';
 
 const Currency = () => {
@@ -60,6 +61,7 @@ const Currency = () => {
   //counter dynamic
 
   return (
+    <CurrencyWrapper>
     <CurrencyBox>
       <CurrencyTitle>
         <CurrencyTitleItem>Currency</CurrencyTitleItem>
@@ -102,7 +104,8 @@ const Currency = () => {
         </ButtonCurrency>
       </ButtonBox>
     </CurrencyBox>
-  );
+    </CurrencyWrapper>
+      );
 };
 
 export default Currency;

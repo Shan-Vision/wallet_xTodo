@@ -4,6 +4,7 @@ import React, {  useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getTransactions, transactionsSelectors } from '../../redux';
 import styled from 'styled-components';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 const TransactionsTable = () => {
   const [dataSource, setDataSource] = useState([
@@ -116,6 +117,7 @@ const TransactionsTable = () => {
   // }, [dispatch]);
 
   return (
+    <TableWrapper>
     <StyledTable
       columns={columns}
       dataSource={dataSource}
@@ -133,7 +135,8 @@ const TransactionsTable = () => {
       scroll={{
         y: 255,
       }}
-    />
+      />
+      </TableWrapper>
   );
 };
 
@@ -162,3 +165,13 @@ const StyledTable = styled(Table)`
     border-radius: 0 30px 30px 0;
   }
 `;
+
+const TableWrapper = styled.div`
+@media screen and (${breakpoints.tablet}) { 
+padding-right: 0;
+}
+@media screen and (${breakpoints.laptop}) { 
+padding: 46px 0 0 69px;
+width: 100%;
+}
+`
