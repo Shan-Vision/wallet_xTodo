@@ -48,7 +48,7 @@ export const Filters = ({ getYearStatistic, getMonthStatistic }) => {
           format={'MMMM YYYY'}
           value={month}
           onChange={monthPickerHandler}
-          placeholder="Month"
+          placeholder={t('statisticTable.FilterMonth')}
         />
         <CustomPicker
           suffixIcon={<TfiAngleDown size="18px" color={theme.colors.black} />}

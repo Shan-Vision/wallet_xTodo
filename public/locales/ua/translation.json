@@ -59,9 +59,10 @@
   "statisticTable": {
     "titleCateg": "Категорія",
     "titleSum": "Сума",
+    "FilterMonth": "Місяць",
     "FilterDescription": "Переглянути статистику за конкретний період легко. Ви можете вибрати період ваших операцій за місяць або за цілий рік!"
       },
-      
+
   "categoryName": {
     "Other expenses": "Інші витрати",
     "Basic expenses": "Базові витрати",

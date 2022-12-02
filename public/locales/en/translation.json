@@ -56,6 +56,7 @@
   "statisticTable": {
     "titleCateg": "Category",
     "titleSum": "Sum",
+    "FilterMonth": "Month",
     "FilterDescription": "It's easy to look at statistics for a specific period. You can choose the period of your transactions per month or for the whole year."
   },
   "categoryName": {
