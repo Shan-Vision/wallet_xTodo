@@ -8,9 +8,12 @@ import {
   FilterDescription,
 } from './Filters.styled';
 import { TfiAngleDown } from 'react-icons/tfi';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import { theme } from '../../styleConfig/theme';
 
 export const Filters = ({ getYearStatistic, getMonthStatistic }) => {
+  const { t } = useTranslation();
   const [month, setMonth] = useState('');
   const [year, setYear] = useState(dayjs('2022', 'YYYY'));
 
@@ -36,8 +39,7 @@ export const Filters = ({ getYearStatistic, getMonthStatistic }) => {
   return (
     <FiltersContainer>
       <FilterDescription>
-        It's easy to look at statistics for a specific period. You can choose
-        the period of your transactions per month or for the whole year.
+        {t('statisticTable.FilterDescription')}
       </FilterDescription>
       <FiltersSelect>
         <CustomPicker

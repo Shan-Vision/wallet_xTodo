@@ -42,7 +42,7 @@ const TransactionsTable = () => {
 
   const columns = [
     {
-      title: 'Date',
+      title: [t('transactions.date')],
       dataIndex: 'date',
       key: 'date',
       render: record => {
@@ -55,7 +55,7 @@ const TransactionsTable = () => {
       width: '17%',
     },
     {
-      title: 'Type',
+      title: [t('transactions.type')],
       dataIndex: 'type',
       key: 'type',
       render: type => (type === 'income' ? '+' : '-'),
@@ -74,24 +74,28 @@ const TransactionsTable = () => {
       onFilter: (value, item) => item.type.includes(value),
     },
     {
-      title: 'Category',
+      title: [t('transactions.category')],
       dataIndex: 'category',
       key: 'category',
       render: category => (
         <>
-          {categories.filter(elem => elem.id === category).map(el => el.name)}
+          {categories
+            .filter(elem => elem.id === category)
+            .map(({ name }) => {
+              return t(`categoryName.${name}`);
+            })}
         </>
       ),
       width: '14%',
     },
     {
-      title: 'Comment',
+      title: [t('transactions.comment')],
       dataIndex: 'comment',
       key: 'comment',
       width: '14%',
     },
     {
-      title: 'Sum',
+      title: [t('transactions.sum')],
       dataIndex: 'sum',
       key: 'sum',
       render: (sum, item) => (
@@ -100,14 +104,14 @@ const TransactionsTable = () => {
       width: '17%',
     },
     {
-      title: 'Balance',
+      title: [t('transactions.balance')],
       dataIndex: 'balance',
       key: 'balance',
       render: (_, { balance }) => balance.toFixed(2),
       width: '17%',
     },
     {
-      title: 'Actions',
+      title: [t('transactions.actions')],
       dataIndex: 'actions',
       render: (_, record) =>
         transactions.length >= 1 ? (
