@@ -7,6 +7,7 @@ import '../../utils/i18next';
 import { Formik, Field } from 'formik';
 import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
+import moment from 'moment';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import Media from 'react-media';
@@ -49,13 +50,14 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().required(),
+  sum: yup.number().positive().required(),
   category: yup.string().required(),
   comment: yup.string(),
   date: yup
     .date()
+
     .default(() => new Date().toISOString())
-    .required(),
+    .required('enter correct date'),
   type: yup.string().required(),
 });
 
@@ -142,6 +144,13 @@ const ModalAddTransaction = ({ onClose }) => {
     }
   };
 
+  const validDate = chosenDate => {
+    if (typeTransaction === 'income') {
+      return chosenDate.isBefore(moment().max(new Date()).add(1, 'month'));
+    }
+    return chosenDate.isBefore(moment().max(new Date()));
+  };
+
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
@@ -158,7 +167,7 @@ const ModalAddTransaction = ({ onClose }) => {
           onSubmit={handleSubmit}
           onChange={handleChange}
         >
-          {({ setFieldValue }) => (
+          {({ setFieldValue, touched, errors }) => (
             <StyledForm autoComplete="off">
               <Switcher>
                 <Income checked={typeTransaction === 'income'}>
@@ -200,14 +209,16 @@ const ModalAddTransaction = ({ onClose }) => {
                       .filter(elem => elem.type === typeTransaction)
                       .map(({ name, id }) => ({ value: id, label: name }))}
                     styles={selectStyles(typeTransaction)}
-                    placeholder="Select a category"
+                    placeholder={t('ModalAdd.Category')}
                     value={category}
                     onChange={option => {
                       setFieldValue('category', option.value);
                     }}
                     isSearchable={false}
                   />
-                  <FormError name="category" />
+                  {touched.category && errors.category && (
+                    <FormError name="category" />
+                  )}
                 </InputCategory>
 
                 <InputWrapper>
@@ -215,10 +226,12 @@ const ModalAddTransaction = ({ onClose }) => {
                   <InputAmount
                     name="sum"
                     type="number"
+                    min="0.01"
+                    step="0.01"
                     value={sum}
                     placeholder="0.00"
                   />
-                  <FormError name="sum" />
+                  {touched.sum && errors.sum && <FormError name="sum" />}
                 </InputWrapper>
 
                 <InputWrapper>
@@ -231,14 +244,18 @@ const ModalAddTransaction = ({ onClose }) => {
                           timeFormat={false}
                           initialValue={new Date()}
                           onChange={date => {
-                            setFieldValue('date', date.toISOString());
+                            setFieldValue('date', date);
                           }}
+                          isValidDate={validDate}
+                          input={true}
+                          closeOnSelect
                         />
                       )}
                     </Field>
 
                     <CalendarIcon />
                   </InputDate>
+                  {touched.date && errors.date && <FormError name="date" />}
                 </InputWrapper>
 
                 <InputWrapper>
@@ -248,6 +265,7 @@ const ModalAddTransaction = ({ onClose }) => {
                     value={comment}
                     placeholder="Comment"
                     as={InputComment}
+                    maxLength={20}
                   />
                 </InputWrapper>
               </InputBox>
