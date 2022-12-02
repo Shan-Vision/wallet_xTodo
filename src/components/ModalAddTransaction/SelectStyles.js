@@ -1,8 +1,8 @@
 export const selectStyles = typeTransaction => {
-  const optionColor = typeTransaction ? '#FF6596' : '#24CCA7';
+  const optionColor = typeTransaction === 'income' ? '#24CCA7' : '#FF6596';
   return {
-    control: provided => ({
-      ...provided,
+    control: data => ({
+      ...data,
       border: 'none',
       borderRadius: 0,
       borderBottom: '1px solid #e0e0e0',
@@ -14,30 +14,33 @@ export const selectStyles = typeTransaction => {
         borderBottom: '1px solid #e0e0e0',
       },
     }),
+
     indicatorSeparator: () => ({ display: 'none' }),
-    valueContainer: provided => ({
-      ...provided,
+    valueContainer: data => ({
+      ...data,
       height: 34,
       display: 'flex',
       justifyContent: 'start',
       padding: '0 20px',
     }),
-    input: provided => ({
-      ...provided,
 
+    input: data => ({
+      ...data,
       height: 34,
       margin: 0,
     }),
-    placeholder: provided => ({
-      ...provided,
+
+    placeholder: data => ({
+      ...data,
       color: '#bdbdbd',
       margin: 0,
       fontSize: 18,
       lineHeight: 1,
       fontFamily: 'Circe, sans-serif',
     }),
-    singleValue: provided => ({
-      ...provided,
+
+    singleValue: data => ({
+      ...data,
       color: '#000000',
       margin: 0,
       fontSize: 18,
@@ -45,14 +48,14 @@ export const selectStyles = typeTransaction => {
       fontFamily: 'Circe, sans-serif',
     }),
 
-    dropdownIndicator: provided => ({
-      ...provided,
+    dropdownIndicator: data => ({
+      ...data,
       color: '#000000',
       alignItems: 'flex-start',
     }),
 
-    menu: provided => ({
-      ...provided,
+    menu: data => ({
+      ...data,
       background: 'rgba(255, 255, 255, 0.7)',
       boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
       backdropFilter: 'blur(20px)',
@@ -60,8 +63,8 @@ export const selectStyles = typeTransaction => {
       overflow: 'hidden',
     }),
 
-    menuList: provided => ({
-      ...provided,
+    menuList: data => ({
+      ...data,
       background: 'transparent',
       borderRadius: 20,
       cursor: 'pointer',
@@ -80,8 +83,8 @@ export const selectStyles = typeTransaction => {
       },
     }),
 
-    option: (provided, { isFocused, isSelected }) => ({
-      ...provided,
+    option: (data, { isFocused, isSelected }) => ({
+      ...data,
       background: isFocused || isSelected ? '#ffffff' : 'transparent',
       color: isFocused || isSelected ? optionColor : '#000000',
       cursor: 'pointer',
