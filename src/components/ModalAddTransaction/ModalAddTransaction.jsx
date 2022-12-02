@@ -50,14 +50,17 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().positive().required(),
-  category: yup.string().required(),
+  sum: yup
+    .number()
+    .positive('Sum must be a positive number')
+    .required('Sum is a required field'),
+  category: yup.string().required('Choose category'),
   comment: yup.string(),
   date: yup
     .date()
-
-    .default(() => new Date().toISOString())
-    .required('enter correct date'),
+    .max(new Date(), `Date should be today or earlier`)
+    .default(moment().subtract(1, 'hour'))
+    .required(),
   type: yup.string().required(),
 });
 
@@ -69,9 +72,10 @@ const ModalAddTransaction = ({ onClose }) => {
   const { t } = useTranslation();
 
   const initialValues = {
+    sum: '',
     category: '',
     comment: '',
-    date: new Date().toISOString(),
+    date: moment(),
     type: false,
   };
 
@@ -145,9 +149,9 @@ const ModalAddTransaction = ({ onClose }) => {
   };
 
   const validDate = chosenDate => {
-    if (typeTransaction === 'income') {
-      return chosenDate.isBefore(moment().max(new Date()).add(1, 'month'));
-    }
+    // if (typeTransaction === 'income') {
+    //   return chosenDate.isBefore(moment().max(new Date()).add(1, 'month'));
+    // }
     return chosenDate.isBefore(moment().max(new Date()));
   };
 
@@ -242,7 +246,7 @@ const ModalAddTransaction = ({ onClose }) => {
                         <Datetime
                           dateFormat="DD.MM.YYYY"
                           timeFormat={false}
-                          initialValue={new Date()}
+                          initialValue={moment().subtract(1, 'hour')}
                           onChange={date => {
                             setFieldValue('date', date);
                           }}
@@ -265,7 +269,7 @@ const ModalAddTransaction = ({ onClose }) => {
                     value={comment}
                     placeholder="Comment"
                     as={InputComment}
-                    maxLength={20}
+                    maxLength={30}
                   />
                 </InputWrapper>
               </InputBox>
