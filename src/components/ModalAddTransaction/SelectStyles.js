@@ -22,6 +22,10 @@ export const selectStyles = typeTransaction => {
       display: 'flex',
       justifyContent: 'start',
       padding: '0 20px',
+
+      '@media (min-width: 768px)': {
+        padding: '0 8px',
+      },
     }),
 
     input: data => ({

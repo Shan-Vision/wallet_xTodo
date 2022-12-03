@@ -125,7 +125,6 @@ const ModalAddTransaction = ({ onClose }) => {
         type: typeTransaction,
       })
     );
-    console.log(sum);
     onClose();
   };
 
