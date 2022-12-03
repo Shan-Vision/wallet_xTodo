@@ -8,6 +8,7 @@ import {
   AuthPageTitle,
 } from './AuthPage.style';
 import registerPageImg from '../components/img/registerPageImg.svg';
+import LanguageFlags from 'components/Localisation/LanguageFlags';
 
 const SignupPage = () => {
   return (
@@ -16,6 +17,7 @@ const SignupPage = () => {
         <title>Signup</title>
       </Helmet>
       <Container>
+        <LanguageFlags />
         <AuthPageTitleGroup>
           <AuthPageImg src={registerPageImg} alt="Logo page image" />
           <AuthPageTitle>Finance App</AuthPageTitle>

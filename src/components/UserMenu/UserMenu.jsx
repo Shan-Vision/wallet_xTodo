@@ -13,6 +13,7 @@ import { useState } from 'react';
 import authSelectors from '../../redux/auth/authSelectors';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 import { useTranslation } from 'react-i18next';
+import LanguageFlags from 'components/Localisation/LanguageFlags';
 import '../../utils/i18next';
 
 export const UserMenu = () => {
@@ -37,11 +38,12 @@ export const UserMenu = () => {
         </UserAvatar>
         <UserName>{userName}</UserName>
       </UserInfo>
+
       <LogOutButton type="button" onClick={toggleModal}>
         <LogOutIcon />
         <LogOutText>{t('LogOut.exit')}</LogOutText>
       </LogOutButton>
-
+      <LanguageFlags />
       {isModalOpen && <ModalLogout onClose={toggleModal} />}
     </Menu>
   );

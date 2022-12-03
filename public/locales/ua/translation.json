@@ -39,6 +39,42 @@
     "expense": "Витрати",
     "Category": "Виберіть категорію",
     "ButtonAdd": "Додати",
-    "ButtonCensel": "Відмінити"
+    "ButtonCensel": "Відмінити",
+    "placeholderComent": "Коментар"
+  },
+  "placeholder": {
+    "placeholderEmail": "Введіть пошту",
+    "placeholderPassword": "Введіть пароль",
+    "placeholderconfirmPassword": "Підтвердіть пароль",
+    "placeholderName": "Введіть ім'я",
+    "buttonReg": "Додати",
+    "buttonLogIn": "Відмінити",
+    "buttonGoogle": "Відмінити"
+  },
+  "buttonAuth": {
+    "buttonReg": "Реєстрація",
+    "buttonLogIn": "Увійти",
+    "buttonGoogle": "Увійти з допомогою Google"
+  },
+  "statisticTable": {
+    "titleCateg": "Категорія",
+    "titleSum": "Сума",
+    "FilterMonth": "Місяць",
+    "FilterDescription": "Переглянути статистику за конкретний період легко. Ви можете вибрати період ваших операцій за місяць або за цілий рік!"
+      },
+      
+  "categoryName": {
+    "Other expenses": "Інші витрати",
+    "Basic expenses": "Базові витрати",
+    "Self care": "Особисті витрати",
+    "Car": "Авто",
+    "Household products": "Товари для дому",
+    "Products": "Продукти",
+    "Leisure": "Дозвілля",
+    "Child care": "Догляд за дітьми",
+    "Education": "Навчання",
+    "Regular Income": "Регулярний дохід",
+    "Irregular Income": "Нерегулярний дохід"
   }
+  
 }

@@ -3,9 +3,9 @@ import { Table } from 'antd';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const StyledTable = styled(Table)`
-  max-width: 715px;
+  max-width: 750px;
   .ant-table {
-    max-width: 715px;
+    max-width: 800px;
     border-radius: ${p => p.theme.radii.large};
     background: transparent;
     /* transparent; */
@@ -90,7 +90,7 @@ export const TableWrapper = styled.div`
     min-width: 0;
   }
   @media screen and (${breakpoints.laptop}) {
-    padding: 46px 0 0 69px;
+    padding: 46px 0 0 0px;
     width: 100%;
   }
 `;
