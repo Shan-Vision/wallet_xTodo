@@ -49,7 +49,7 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().required(),
+  sum: yup.number().positive('must be greater than 0').required(),
   category: yup.string().required(),
   comment: yup.string(),
   date: yup
@@ -218,6 +218,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <InputAmount
                     name="sum"
                     type="number"
+                    step="any"
                     value={sum}
                     placeholder="0.00"
                   />

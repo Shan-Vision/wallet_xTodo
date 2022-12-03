@@ -101,7 +101,7 @@ const TransactionsTable = () => {
       render: (sum, item) => (
         <SumStyled type={item.type}>{sum.toFixed(2)} </SumStyled>
       ),
-      width: '17%',
+      width: '13%',
     },
     {
       title: [t('transactions.balance')],

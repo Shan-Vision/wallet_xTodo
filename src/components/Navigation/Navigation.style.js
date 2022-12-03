@@ -29,7 +29,7 @@ export const NavigLink = styled(NavLink)`
   &:focus {
     font-weight: ${p => p.theme.fontWeights.bold};
     color: ${p => p.theme.colors.black};
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
   
   @media screen and (${breakpoints.tablet}) {
@@ -47,7 +47,7 @@ export const NavItem = styled.li`
   display: flex;
   margin-left: auto;
   margin-right: auto;
- 
+
   @media screen and (${breakpoints.tablet}) {
     display: block;
     margin-left: 0;
@@ -67,8 +67,7 @@ export const NavText = styled.span`
   color: ${p => p.theme.colors.black};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
-  &:hover
-   {
+  &:hover {
     color: ${p => p.theme.colors.black};
     font-weight: ${p => p.theme.fontWeights.bold};
   }
@@ -110,7 +109,7 @@ export const IconHome = styled(FaHome)`
       transition: color 250ms linear;
       background-color: ${p => p.theme.colors.secondary};
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-    }  
+    }
   }
   @media screen and (${breakpoints.laptop}) {
     &:hover,
@@ -119,7 +118,7 @@ export const IconHome = styled(FaHome)`
       transition: color 250ms linear;
       background-color: ${p => p.theme.colors.secondary};
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-    }    
+    }
   }
 `;
 export const IconGraph = styled(SlGraph)`
@@ -166,15 +165,15 @@ export const IconCurrency = styled(MdOutlineAttachMoney)`
   @media screen and (${breakpoints.tablet}) {
     &:hover,
     &:focus,
-    &:active {      
-      background-color: ${p => p.theme.colors.secondary};      
+    &:active {
+      background-color: ${p => p.theme.colors.secondary};
     }
   }
   @media screen and (${breakpoints.laptop}) {
     &:hover,
     &:focus,
-    &:active {     
-      background-color: ${p => p.theme.colors.secondary};      
+    &:active {
+      background-color: ${p => p.theme.colors.secondary};
     }
   }
 `;

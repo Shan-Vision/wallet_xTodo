@@ -38,12 +38,12 @@ export const UserMenu = () => {
         </UserAvatar>
         <UserName>{userName}</UserName>
       </UserInfo>
-      <LanguageFlags />
+
       <LogOutButton type="button" onClick={toggleModal}>
         <LogOutIcon />
         <LogOutText>{t('LogOut.exit')}</LogOutText>
       </LogOutButton>
-
+      <LanguageFlags />
       {isModalOpen && <ModalLogout onClose={toggleModal} />}
     </Menu>
   );
