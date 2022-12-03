@@ -50,14 +50,17 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().positive('must be greater than 0').required(),
-  category: yup.string().required(),
+  sum: yup
+    .number()
+    .positive('Sum must be a positive number')
+    .required('Sum is a required field'),
+  category: yup.string().required('Choose category'),
   comment: yup.string(),
   date: yup
     .date()
-
-    .default(() => new Date().toISOString())
-    .required('enter correct date'),
+    .max(moment().add(1, 'hour'), `Date should be today or earlier`)
+    .default(() => new Date())
+    .required(),
   type: yup.string().required(),
 });
 
@@ -69,9 +72,10 @@ const ModalAddTransaction = ({ onClose }) => {
   const { t } = useTranslation();
 
   const initialValues = {
+    sum: '',
     category: '',
     comment: '',
-    date: new Date().toISOString(),
+    date: new Date(),
     type: false,
   };
 
@@ -121,7 +125,6 @@ const ModalAddTransaction = ({ onClose }) => {
         type: typeTransaction,
       })
     );
-
     onClose();
   };
 
@@ -145,10 +148,7 @@ const ModalAddTransaction = ({ onClose }) => {
   };
 
   const validDate = chosenDate => {
-    if (typeTransaction === 'income') {
-      return chosenDate.isBefore(moment().max(new Date()).add(1, 'month'));
-    }
-    return chosenDate.isBefore(moment().max(new Date()));
+    return chosenDate.isBefore(moment(new Date()));
   };
 
   return createPortal(
@@ -229,7 +229,8 @@ const ModalAddTransaction = ({ onClose }) => {
                   <InputAmount
                     name="sum"
                     type="number"
-                    step="any"
+                    min="0.01"
+                    step="0.01"
                     value={sum}
                     placeholder="0.00"
                   />
@@ -241,20 +242,20 @@ const ModalAddTransaction = ({ onClose }) => {
                   <InputDate>
                     <Field name="date">
                       {({ field, form: { isSubmitting } }) => (
-                        <Datetime
-                          dateFormat="DD.MM.YYYY"
-                          timeFormat={false}
-                          initialValue={new Date()}
-                          onChange={date => {
-                            setFieldValue('date', date);
-                          }}
-                          isValidDate={validDate}
-                          input={true}
-                          closeOnSelect
-                        />
+                        <>
+                          <Datetime
+                            dateFormat="DD.MM.YYYY"
+                            timeFormat={false}
+                            initialValue={new Date()}
+                            onChange={date => {
+                              setFieldValue('date', date);
+                            }}
+                            isValidDate={validDate}
+                            closeOnSelect
+                          />
+                        </>
                       )}
                     </Field>
-
                     <CalendarIcon />
                   </InputDate>
                   {touched.date && errors.date && <FormError name="date" />}
@@ -267,7 +268,7 @@ const ModalAddTransaction = ({ onClose }) => {
                     value={comment}
                     placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
-                    maxLength={20}
+                    maxLength={30}
                   />
                 </InputWrapper>
               </InputBox>
