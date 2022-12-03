@@ -7,13 +7,16 @@ import {
   AmountCeilStyled,
 } from './StatisticTable.styled';
 import { findColorById } from '../../helpers/helpers';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 
 export const StatisticTable = ({ data }) => {
+  const { t } = useTranslation();
   const dataSource = data.map(({ totalSum, id, name }) => {
     return {
       key: id,
       title: {
-        text: name,
+        text:  [t(`categoryName.${name}`)],
         color: findColorById(id),
       },
       amount: totalSum.toFixed(2),
@@ -23,7 +26,7 @@ export const StatisticTable = ({ data }) => {
 
   const columns = [
     {
-      title: 'Category',
+      title: [t('statisticTable.titleCateg')],
       dataIndex: 'title',
       key: 'title',
       render: title => (
@@ -34,7 +37,7 @@ export const StatisticTable = ({ data }) => {
       ),
     },
     {
-      title: 'Sum',
+      title: [t('statisticTable.titleSum')],
       dataIndex: 'amount',
       key: 'amount',
       render: amount => <AmountCeilStyled>{amount} </AmountCeilStyled>,

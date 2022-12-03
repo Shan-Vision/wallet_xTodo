@@ -4,7 +4,6 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import cookies from 'js-cookie';
-
 import './flags.css';
 import LanguageIcon from '@mui/icons-material/Language';
 
@@ -85,9 +84,8 @@ export default function LanguageFlags() {
         }}
       >
         {languages.map(({ code, name, country_code }) => (
-          <Tooltip title={name} arrow placement="left">
-            <MenuItem
-              key={code}
+          <Tooltip title={name} key={code} arrow placement="left">
+            <MenuItem              
               style={{
                 backgroundColor:
                   currentLanguageCode === code ? '#D8D8D8' : '#F8F8F8',

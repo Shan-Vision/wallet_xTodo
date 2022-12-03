@@ -37,6 +37,7 @@ export const UserName = styled.div`
   @media screen and (${breakpoints.tablet}) {
     display: block;
     padding-top: 3px;
+    min-width: 100%;
   }
 `;
 

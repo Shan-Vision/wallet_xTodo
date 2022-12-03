@@ -50,7 +50,7 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().positive().required(),
+  sum: yup.number().positive('must be greater than 0').required(),
   category: yup.string().required(),
   comment: yup.string(),
   date: yup
@@ -207,7 +207,10 @@ const ModalAddTransaction = ({ onClose }) => {
                     components={<DownOutlined />}
                     options={categories
                       .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => ({ value: id, label: name }))}
+                      .map(({ name, id }) => ({
+                        value: id,
+                        label: [t(`categoryName.${name}`)],
+                      }))}
                     styles={selectStyles(typeTransaction)}
                     placeholder={t('ModalAdd.Category')}
                     value={category}
@@ -263,7 +266,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <Field
                     name="comment"
                     value={comment}
-                    placeholder="Comment"
+                    placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
                     maxLength={20}
                   />
