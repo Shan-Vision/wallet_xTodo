@@ -4,6 +4,8 @@ import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
 import { useKeyLock } from 'hooks';
 import { validationSchema } from 'validationSchema';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 
 import { MailFilled, LockFilled, UserOutlined } from '@ant-design/icons';
 import {
@@ -26,6 +28,7 @@ import { ReactComponent as GoogleLogo } from '../img/google.svg';
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
   const capsLock = useKeyLock('CapsLock');
+  const { t } = useTranslation();
 
   const googleAuthRedirect = 'https://ewallet-api.onrender.com/api/auth/google';
 
@@ -63,7 +66,7 @@ export const AuthForm = ({ type }) => {
                   <StyledInput
                     {...field}
                     disabled={isSubmitting}
-                    placeholder="E-mail"
+                    placeholder={t('placeholder.placeholderEmail')}
                     bordered={false}
                     prefix={<MailFilled />}
                   />
@@ -77,7 +80,7 @@ export const AuthForm = ({ type }) => {
                   <StyledInputPassword
                     {...field}
                     disabled={isSubmitting}
-                    placeholder="Password"
+                    placeholder={t('placeholder.placeholderPassword')}
                     bordered={false}
                     prefix={<LockFilled />}
                   />
@@ -95,7 +98,9 @@ export const AuthForm = ({ type }) => {
                       <StyledInputPassword
                         {...field}
                         disabled={isSubmitting}
-                        placeholder="Confirm password"
+                        placeholder={t(
+                          'placeholder.placeholderconfirmPassword'
+                        )}
                         bordered={false}
                         prefix={<LockFilled />}
                       />
@@ -112,7 +117,7 @@ export const AuthForm = ({ type }) => {
                       <StyledInput
                         {...field}
                         disabled={isSubmitting}
-                        placeholder="First name"
+                        placeholder={t('placeholder.placeholderName')}
                         bordered={false}
                         prefix={<UserOutlined />}
                       />
@@ -127,27 +132,31 @@ export const AuthForm = ({ type }) => {
             {type === 'register' ? (
               <>
                 <PrimaryButton type="submit" disabled={!isValid || !dirty}>
-                  register
+                  {t('buttonAuth.buttonReg')}
                 </PrimaryButton>
-                <StyledLink to="/login">log in</StyledLink>
+                <StyledLink to="/login">
+                  {t('buttonAuth.buttonLogIn')}
+                </StyledLink>
                 <GoogleLink href={googleAuthRedirect} rel="noreferrer">
                   <GoogleLogo
                     style={{ height: '1.2em', marginRight: '10px' }}
                   />
-                  Sign Up with Google
+                  {t('buttonAuth.buttonGoogle')}
                 </GoogleLink>
               </>
             ) : (
               <>
                 <PrimaryButton disabled={!isValid || !dirty} type="submit">
-                  log in
+                  {t('buttonAuth.buttonLogIn')}
                 </PrimaryButton>
-                <StyledLink to="/signup">register</StyledLink>
+                <StyledLink to="/signup">
+                  {t('buttonAuth.buttonReg')}
+                </StyledLink>
                 <GoogleLink href={googleAuthRedirect} rel="noreferrer">
                   <GoogleLogo
                     style={{ height: '1.2em', marginRight: '10px' }}
                   />
-                  Log In with Google
+                  {t('buttonAuth.buttonGoogle')}
                 </GoogleLink>
               </>
             )}

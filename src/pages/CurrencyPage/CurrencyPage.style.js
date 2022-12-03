@@ -11,7 +11,6 @@ export const CurrencyBlur = styled.div`
 
 export const CurrencyWrapper = styled.div`
   position: relative;
-  //max-width: 1280px;
   margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     padding: 0 32px;

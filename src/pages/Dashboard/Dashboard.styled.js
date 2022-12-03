@@ -25,6 +25,7 @@ export const DashboardWrapper = styled.div`
   @media screen and (${breakpoints.laptop}) {
     padding: 0 16px 47px 16px;
     display: flex;
+    max-width: 1280px;
   }
 `;
 
