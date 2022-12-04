@@ -17,12 +17,12 @@ const SignupPage = () => {
         <title>Signup</title>
       </Helmet>
       <Container>
-        <LanguageFlags />
         <AuthPageTitleGroup>
           <AuthPageImg src={registerPageImg} alt="Logo page image" />
           <AuthPageTitle>Finance App</AuthPageTitle>
         </AuthPageTitleGroup>
         <AuthFormContainer>
+          <LanguageFlags />
           <AuthForm type={'register'} />
         </AuthFormContainer>
       </Container>

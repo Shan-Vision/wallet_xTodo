@@ -51,7 +51,7 @@
   "buttonAuth": {
     "buttonReg": "register",
     "buttonLogIn": "log in",
-    "buttonGoogle": "Sign Up with Google"
+    "buttonGoogle": "Log In with Google"
   },
   "statisticTable": {
     "titleCateg": "Category",

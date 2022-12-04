@@ -46,15 +46,12 @@
     "placeholderEmail": "Введіть пошту",
     "placeholderPassword": "Введіть пароль",
     "placeholderconfirmPassword": "Підтвердіть пароль",
-    "placeholderName": "Введіть ім'я",
-    "buttonReg": "Додати",
-    "buttonLogIn": "Відмінити",
-    "buttonGoogle": "Відмінити"
+    "placeholderName": "Введіть ім'я"   
   },
   "buttonAuth": {
     "buttonReg": "Реєстрація",
     "buttonLogIn": "Увійти",
-    "buttonGoogle": "Увійти з допомогою Google"
+    "buttonGoogle": "Увійти з даними Google"
   },
   "statisticTable": {
     "titleCateg": "Категорія",
