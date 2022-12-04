@@ -7,6 +7,7 @@ import '../../utils/i18next';
 import { Formik, Field } from 'formik';
 import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
+import moment from 'moment';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import Media from 'react-media';
@@ -49,12 +50,16 @@ import './rdt-styles.css';
 const modalRoot = document.getElementById('modal-root');
 
 const transactionSchema = yup.object().shape({
-  sum: yup.number().positive('must be greater than 0').required(),
-  category: yup.string().required(),
+  sum: yup
+    .number()
+    .positive('Sum must be a positive number')
+    .required('Sum is a required field'),
+  category: yup.string().required('Choose category'),
   comment: yup.string(),
   date: yup
     .date()
-    .default(() => new Date().toISOString())
+    .max(moment().add(1, 'hour'), `Date should be today or earlier`)
+    .default(() => new Date())
     .required(),
   type: yup.string().required(),
 });
@@ -67,15 +72,16 @@ const ModalAddTransaction = ({ onClose }) => {
   const { t } = useTranslation();
 
   const initialValues = {
+    sum: '',
     category: '',
     comment: '',
-    date: new Date().toISOString(),
+    date: new Date(),
     type: false,
   };
 
   const dispatch = useDispatch();
 
-  const categories = useSelector(categoriesSelectors.getCategories);  
+  const categories = useSelector(categoriesSelectors.getCategories);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -119,7 +125,6 @@ const ModalAddTransaction = ({ onClose }) => {
         type: typeTransaction,
       })
     );
-
     onClose();
   };
 
@@ -142,6 +147,10 @@ const ModalAddTransaction = ({ onClose }) => {
     }
   };
 
+  const validDate = chosenDate => {
+    return chosenDate.isBefore(moment(new Date()));
+  };
+
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
@@ -158,7 +167,7 @@ const ModalAddTransaction = ({ onClose }) => {
           onSubmit={handleSubmit}
           onChange={handleChange}
         >
-          {({ setFieldValue }) => (
+          {({ setFieldValue, touched, errors }) => (
             <StyledForm autoComplete="off">
               <Switcher>
                 <Income checked={typeTransaction === 'income'}>
@@ -210,7 +219,9 @@ const ModalAddTransaction = ({ onClose }) => {
                     }}
                     isSearchable={false}
                   />
-                  <FormError name="category" />
+                  {touched.category && errors.category && (
+                    <FormError name="category" />
+                  )}
                 </InputCategory>
 
                 <InputWrapper>
@@ -218,11 +229,12 @@ const ModalAddTransaction = ({ onClose }) => {
                   <InputAmount
                     name="sum"
                     type="number"
-                    step="any"
+                    min="0.01"
+                    step="0.01"
                     value={sum}
                     placeholder="0.00"
                   />
-                  <FormError name="sum" />
+                  {touched.sum && errors.sum && <FormError name="sum" />}
                 </InputWrapper>
 
                 <InputWrapper>
@@ -235,14 +247,18 @@ const ModalAddTransaction = ({ onClose }) => {
                           timeFormat={false}
                           initialValue={new Date()}
                           onChange={date => {
-                            setFieldValue('date', date.toISOString());
+                            setFieldValue('date', date);
                           }}
+                          isValidDate={validDate}
+                          input={true}
+                          closeOnSelect
                         />
                       )}
                     </Field>
 
                     <CalendarIcon />
                   </InputDate>
+                  {touched.date && errors.date && <FormError name="date" />}
                 </InputWrapper>
 
                 <InputWrapper>
@@ -252,6 +268,7 @@ const ModalAddTransaction = ({ onClose }) => {
                     value={comment}
                     placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
+                    maxLength={30}
                   />
                 </InputWrapper>
               </InputBox>
