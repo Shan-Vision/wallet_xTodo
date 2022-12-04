@@ -17,12 +17,12 @@ const LoginPage = () => {
         <title>Login</title>
       </Helmet>
       <Container>
-        <LanguageFlags />
         <AuthPageTitleGroup>
           <AuthPageImg src={loginPageImg} alt="Logo page image" />
           <AuthPageTitle>Finance App</AuthPageTitle>
         </AuthPageTitleGroup>
         <AuthFormContainer>
+          <LanguageFlags />
           <AuthForm type={'login'} />
         </AuthFormContainer>
       </Container>

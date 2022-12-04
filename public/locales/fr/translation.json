@@ -1,0 +1,76 @@
+{
+  "links": {
+    "home": "Page d'accueil",
+    "statistic": "Statistiques"
+  },
+  "balance": {
+    "BalanceTitle": "VOTRE SOLDE"
+  },
+  "currency": {
+    "currency": "Devise",
+    "purchase": "Acheter",
+    "sale": "Vendre",
+    "cash": "En espèces",
+    "cashless": "Sans numéraire"
+  },
+  "transactions": {
+    "date": "Date",
+    "type": "Taper",
+    "category": "Catégorie",
+    "comment": "Commentaire",
+    "sum": "Somme",
+    "balance": "Solde",
+    "actions": "Actions"
+  },
+  "diagram": {
+    "DiagramTabTitle": "Statistiques",
+    "expenses": "Dépenses",
+    "income": "Profit"
+  },
+  "LogOut": {
+    "exit": "Sortir",
+    "LogOutTitle": "Voulez-vous quitter l'application?",
+    "ButtonYES": "Oui",
+    "ButtonNo": "Non"
+  },
+  "ModalAdd": {
+    "modalTitle": "Ajouter une opération",
+    "income": "Profit",
+    "expense": "Dépenses",
+    "Category": "Choisissez une catégorie",
+    "ButtonAdd": "Ajouter",
+    "ButtonCensel": "Annuler",
+    "placeholderComent": "Commentaire"
+  },
+  "placeholder": {
+    "placeholderEmail": "E-mail",
+    "placeholderPassword": "Mot de passe",
+    "placeholderconfirmPassword": "Confirmez le mot de passe",
+    "placeholderName": "Prénom"
+  },
+  "buttonAuth": {
+    "buttonReg": "S'inscrire",
+    "buttonLogIn": "Connexion",
+    "buttonGoogle": "Connectez-vous avec Google"
+  },
+  "statisticTable": {
+    "titleCateg": "Catégorie",
+    "titleSum": "Somme",
+    "FilterMonth": "Le mois",
+    "FilterDescription": "Il est facile de consulter les statistiques pour une période spécifique. Vous pouvez choisir la période de vos transactions par mois ou pour toute l'année."
+  },
+
+  "categoryName": {
+    "Other expenses": "Autres dépenses",
+    "Basic expenses": "Dépenses de base",
+    "Self care": "Dépenses personnelles",
+    "Car": "Auto",
+    "Household products": "Produits menagers",
+    "Products": "Produits",
+    "Leisure": "Loisirs",
+    "Child care": "Garde d'enfants",
+    "Education": "Éducation",
+    "Regular Income": "Revenu régulier",
+    "Irregular Income": "Revenu irrégulier"
+  }
+}
