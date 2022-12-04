@@ -7,7 +7,6 @@
     "@ant-design/plots": "^1.2.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@reduxjs/toolkit": "^1.9.0",

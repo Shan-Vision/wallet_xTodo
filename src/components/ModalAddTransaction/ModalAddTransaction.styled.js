@@ -148,7 +148,7 @@ export const InputDate = styled.div`
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 0 ${p => p.theme.space[1]}px;
+  padding: 0 ${p => p.theme.space[4]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
@@ -176,7 +176,7 @@ export const CalendarIcon = styled(CalendarOutlined)`
 `;
 
 export const InputComment = styled.textarea`
-  padding: 0 ${p => p.theme.space[1]}px;
+  padding: 0 ${p => p.theme.space[4]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
@@ -197,6 +197,7 @@ export const InputComment = styled.textarea`
   }
 
   @media (${breakpoints.tablet}) {
+    padding: 0 ${p => p.theme.space[1]}px;
     overflow: hidden;
     width: 394px;
     height: 32px;
