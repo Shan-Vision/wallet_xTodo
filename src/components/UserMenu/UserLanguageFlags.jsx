@@ -4,16 +4,14 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import cookies from 'js-cookie';
-import {FlagsDiv } from  '../Localisation/flags';
+import { FlagsDiv } from '../UserMenu/userFlags';
 import LanguageIcon from '@mui/icons-material/Language';
-
-
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import classNames from 'classnames';
 
-export default function LanguageFlags() {
+export default function UserLanguageFlags() {
   const languages = [
     {
       code: 'en',
